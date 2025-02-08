@@ -13,6 +13,9 @@ class Publisher:
     def send_string(self, data: str) -> bool:
         return self.send_bytes(str.encode(data))
 
+    def send_empty(self) -> bool:
+        return self.send_bytes(b'')
+
     def send_bytes(self, data: bytes) -> bool:
         packet_len = len(self.topic) + 1 + len(data)
         if packet_len >= UDP_MAX_LEN:
